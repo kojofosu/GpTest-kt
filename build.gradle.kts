@@ -4,7 +4,7 @@ plugins {
 }
 
 group = "com.edue"
-version = "1.2-SNAPSHOT"
+version = "1.4-SNAPSHOT"
 
 repositories {
     mavenCentral()
@@ -18,7 +18,7 @@ tasks.test {
     useJUnitPlatform()
 }
 kotlin {
-    jvmToolchain(21)
+    jvmToolchain(20)
 }
 
 publishing {
@@ -32,9 +32,35 @@ publishing {
             }
         }
     }
+//    publications {
+//        register<MavenPublication>("gpr") {
+//            from(components["kotlin"])
+//        }
+//    }
+
     publications {
-        register<MavenPublication>("gpr") {
-            from(components["kotlin"])
+        create<MavenPublication>("gpr") {
+            from(components["java"])
+
+            groupId = "com.edue"
+            artifactId = "gptest-kt"
+            version = "1.4"
+
+            // If you have sources and Javadoc, include them as well
+//            artifact(tasks["javadocJar"])
+//            artifact(tasks["sourcesJar"])
         }
     }
 }
+
+//tasks {
+//    create<Jar>("sourcesJar") {
+//        archiveClassifier.set("sources")
+//        from(sourceSets.main.get().allSource)
+//    }
+//
+////    create<Jar>("javadocJar") {
+////        archiveClassifier.set("javadoc")
+////        from(tasks.javadoc)
+////    }
+//}
