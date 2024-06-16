@@ -4,7 +4,7 @@ plugins {
 }
 
 group = "com.edue"
-version = "1.0-SNAPSHOT"
+version = "1.2-SNAPSHOT"
 
 repositories {
     mavenCentral()
@@ -25,7 +25,7 @@ publishing {
     repositories {
         maven {
             name = "GPTest-kt"
-            url = uri("https://maven.pkg.github.com/kojofosu/GpTest-kt.git")
+            url = uri("https://maven.pkg.github.com/kojofosu/GpTest-kt")
             credentials {
                 username = project.findProperty("gpr.user") as String? ?: System.getenv("USERNAME")
                 password = project.findProperty("gpr.key") as String? ?: System.getenv("TOKEN")
